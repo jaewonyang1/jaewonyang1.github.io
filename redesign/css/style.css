@@ -1875,9 +1875,10 @@ nav {
 
 .hero-signal-metrics {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
     gap: 12px;
     margin-top: 28px;
+    max-width: 170px;
 }
 
 .hero-signal-metric {
@@ -2006,26 +2007,11 @@ nav {
     cursor: pointer;
 }
 
-.project-card-interactive::after {
-    content: 'DETAIL VIEW';
-    position: absolute;
-    top: 18px;
-    right: 24px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 1.8px;
-    color: #a6f6e0;
-    padding: 6px 10px;
-    border-radius: 999px;
-    background: rgba(143, 247, 210, 0.08);
-    border: 1px solid rgba(143, 247, 210, 0.16);
-}
-
 .project-card-interactive:hover {
-    transform: translateY(-10px) scale(1.01);
+    transform: translateY(-12px) scale(1.035);
     border-color: rgba(143, 247, 210, 0.28);
     background: rgba(12, 26, 43, 0.96);
-    box-shadow: 0 26px 80px rgba(14, 78, 118, 0.3);
+    box-shadow: 0 32px 90px rgba(14, 78, 118, 0.34);
 }
 
 .project-card-interactive:hover::before {
@@ -2038,6 +2024,16 @@ nav {
     right: 20px;
     transform: translateX(6px);
     text-shadow: 0 0 20px rgba(83, 199, 255, 0.45);
+}
+
+.project-card-interactive:hover .project-card-icon {
+    transform: scale(1.08);
+    filter: drop-shadow(0 14px 28px rgba(83, 199, 255, 0.2));
+}
+
+.project-card-interactive:hover .project-card-body {
+    transform: scale(1.012);
+    transform-origin: left center;
 }
 
 .project-card-static {
@@ -2167,8 +2163,4 @@ nav {
         grid-template-columns: 1fr;
     }
 
-    .project-card-interactive::after {
-        top: 16px;
-        right: 18px;
-    }
 }
