@@ -135,7 +135,7 @@
         { value: '5.5+', label: 'Years', desc: '정보보안 실무 경력' },
         { value: '20+', label: 'Projects', desc: '취약점 진단 및 컨설팅 수행' },
         { value: '450+', label: 'Actions', desc: '전자금융기반시설 취약점 조치' },
-        { value: 'ISMS', label: 'Audit', desc: '인증 대응 및 증적 운영 경험' },
+        { value: 'ISMS·PG', label: 'Audit', desc: '인증 대응 및 증적 운영 경험' },
     ];
 
     const summaryCards = [
@@ -434,11 +434,9 @@
         useEffect(() => {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
+                    entry.target.classList.toggle('visible', entry.isIntersecting);
                 });
-            }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+            }, { threshold: 0.18, rootMargin: '0px 0px -10% 0px' });
 
             document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
             return () => observer.disconnect();
@@ -494,15 +492,28 @@
                                     </div>
                                 </div>
                                 <div className="hero-right">
-                                    <div className="hero-ornament">
-                                        <div className="hero-ornament-ring"></div>
-                                        <div className="hero-ornament-ring"></div>
-                                        <div className="hero-ornament-ring"></div>
-                                        <div className="hero-ornament-center">5.5+</div>
-                                        <div className="hero-ornament-dot"></div>
-                                        <div className="hero-ornament-dot"></div>
-                                        <div className="hero-ornament-dot"></div>
-                                        <div className="hero-ornament-dot"></div>
+                                    <div className="hero-signal">
+                                        <div className="hero-signal-orb hero-signal-orb-a"></div>
+                                        <div className="hero-signal-orb hero-signal-orb-b"></div>
+                                        <div className="hero-signal-panel">
+                                            <div className="hero-signal-tag">Security Portfolio</div>
+                                            <div className="hero-signal-value">5.5+</div>
+                                            <div className="hero-signal-copy">Years of hands-on experience in audit response, infra protection, vulnerability assessment, and security operations.</div>
+                                            <div className="hero-signal-metrics">
+                                                <div className="hero-signal-metric">
+                                                    <span className="hero-signal-metric-label">AUDIT</span>
+                                                    <strong>ISMS·PG</strong>
+                                                </div>
+                                                <div className="hero-signal-metric">
+                                                    <span className="hero-signal-metric-label">ACTION</span>
+                                                    <strong>450+</strong>
+                                                </div>
+                                                <div className="hero-signal-metric">
+                                                    <span className="hero-signal-metric-label">FOCUS</span>
+                                                    <strong>Infra Security</strong>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -573,7 +584,7 @@
                                 </div>
                                 <div className="projects-list">
                                     {projects.map((p, idx) => (
-                                        <div key={idx} className="project-card fade-in" onClick={() => selectProject(idx)} style={{ transitionDelay: `${Math.min(idx * 0.06, 0.4)}s` }}>
+                                        <div key={idx} className="project-card project-card-interactive fade-in" onClick={() => selectProject(idx)} style={{ transitionDelay: `${Math.min(idx * 0.06, 0.4)}s` }}>
                                             <div className="project-card-left">
                                                 <div className="project-card-icon" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', background: 'var(--bg-2)', borderRadius: '12px' }}>
                                                     <img src={p.iconSrc} alt={p.iconAlt || `${p.company} 경력 아이콘`} style={{ ...p.iconStyle, display: 'block', objectFit: 'contain' }} />
@@ -660,7 +671,7 @@
                                 </div>
                                 <div className="projects-list">
                                     {certifications.map((cert, idx) => (
-                                        <div key={idx} className="project-card fade-in" style={{ transitionDelay: `${Math.min(idx * 0.06, 0.4)}s`, cursor: 'default' }}>
+                                        <div key={idx} className="project-card project-card-static fade-in" style={{ transitionDelay: `${Math.min(idx * 0.06, 0.4)}s`, cursor: 'default' }}>
                                             <div className="project-card-left">
                                                 <div style={{ fontSize: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', background: 'var(--bg-2)', borderRadius: '12px' }}>
                                                     {idx === 2 ? '\u{1F393}' : '\u{1F4DC}'}
