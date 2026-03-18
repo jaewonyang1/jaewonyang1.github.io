@@ -2557,7 +2557,7 @@ nav {
     transform-style: flat !important;
     backface-visibility: visible;
     -webkit-font-smoothing: antialiased;
-    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.38s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.38s ease, background-color 0.38s ease;
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.52s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.52s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.38s ease, background-color 0.38s ease;
     will-change: auto;
     contain: none;
 }
@@ -2574,7 +2574,7 @@ nav {
 }
 
 .project-card.project-card-interactive:hover {
-    transform: translateY(-12px) !important;
+    transform: translate3d(0, -12px, 0) scale(1) !important;
     border-color: rgba(201, 169, 110, 0.34);
     background: rgba(20, 26, 38, 0.96);
     box-shadow:
@@ -2601,7 +2601,7 @@ nav {
     filter: blur(6px);
     opacity: 0;
     transform: scale(0.86);
-    transition: opacity 0.38s cubic-bezier(0.22, 1, 0.36, 1), transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: opacity 0.52s cubic-bezier(0.22, 1, 0.36, 1), transform 0.52s cubic-bezier(0.22, 1, 0.36, 1);
     z-index: -1;
     pointer-events: none;
 }
