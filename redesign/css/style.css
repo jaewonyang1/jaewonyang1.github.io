@@ -1914,7 +1914,8 @@ body::after {
 }
 
 .project-card-interactive:hover {
-    transform: perspective(1500px) translateY(-18px) translateZ(30px) scale(1.04) rotateX(8deg);
+    transform: perspective(1500px) translateY(-20px) translateZ(34px) scale(1.05) rotateX(9deg);
+    animation: card-pop-up 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .project-card-interactive:hover .project-card-title {
@@ -1926,7 +1927,7 @@ body::after {
 }
 
 .project-card-interactive:hover .project-card-body {
-    transform: translateY(-6px);
+    transform: translateY(-8px);
 }
 
 @keyframes text-pop-up-top {
@@ -1941,6 +1942,17 @@ body::after {
             0 2px 0 rgba(9, 11, 17, 0.8),
             0 3px 0 rgba(9, 11, 17, 0.72),
             0 10px 20px rgba(0, 0, 0, 0.32);
+    }
+}
+
+@keyframes card-pop-up {
+    0% {
+        transform: perspective(1500px) translateY(0) translateZ(0) scale(1) rotateX(0deg);
+        box-shadow: 0 20px 60px rgba(5, 12, 24, 0.2);
+    }
+    100% {
+        transform: perspective(1500px) translateY(-20px) translateZ(34px) scale(1.05) rotateX(9deg);
+        box-shadow: 0 48px 120px rgba(0, 0, 0, 0.42), 0 0 0 1px rgba(201, 169, 110, 0.16);
     }
 }
 
