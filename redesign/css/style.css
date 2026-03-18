@@ -2557,7 +2557,7 @@ nav {
     transform-style: flat !important;
     backface-visibility: visible;
     -webkit-font-smoothing: antialiased;
-    transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.38s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.38s ease, background-color 0.38s ease;
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.38s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.38s ease, background-color 0.38s ease;
     will-change: auto;
     contain: none;
 }
