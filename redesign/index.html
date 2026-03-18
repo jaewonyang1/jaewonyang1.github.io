@@ -335,6 +335,7 @@
 
     const Portfolio = () => {
         const [selectedProject, setSelectedProject] = useState(null);
+        const [scrollProgress, setScrollProgress] = useState(0);
         const scrollPosRef = useRef(0);
 
         const selectProject = (idx) => {
@@ -362,6 +363,24 @@
             return () => observer.disconnect();
         }, [selectedProject]);
 
+        useEffect(() => {
+            const updateScrollProgress = () => {
+                const scrollTop = window.scrollY;
+                const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const progress = scrollHeight > 0 ? Math.min(scrollTop / scrollHeight, 1) : 0;
+                setScrollProgress(progress);
+            };
+
+            updateScrollProgress();
+            window.addEventListener('scroll', updateScrollProgress, { passive: true });
+            window.addEventListener('resize', updateScrollProgress);
+
+            return () => {
+                window.removeEventListener('scroll', updateScrollProgress);
+                window.removeEventListener('resize', updateScrollProgress);
+            };
+        }, [selectedProject]);
+
         const scrollTo = (id) => {
             document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
         };
@@ -383,6 +402,9 @@
                                 <li><a className="nav-link" onClick={() => scrollTo('contact')}>연락처</a></li>
                             </ul>
                         )}
+                    </div>
+                    <div className="scroll-progress">
+                        <div className="scroll-progress-fill" style={{ transform: `scaleX(${scrollProgress})` }}></div>
                     </div>
                 </nav>
 
