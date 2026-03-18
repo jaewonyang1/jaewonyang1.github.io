@@ -2554,10 +2554,13 @@ nav {
 /* ===== CARD BOX POP-UP FINAL OVERRIDE ===== */
 .project-card-interactive {
     isolation: isolate;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    transform: translateZ(0);
 }
 
 .project-card-interactive:hover {
-    transform: translateY(-18px);
+    transform: translateY(-18px) translateZ(0);
     border-color: rgba(201, 169, 110, 0.34);
     background: rgba(20, 26, 38, 0.96);
     box-shadow:
@@ -2607,6 +2610,20 @@ nav {
     animation: none;
     -webkit-font-smoothing: antialiased;
     text-rendering: geometricPrecision;
+    backface-visibility: hidden;
+}
+
+.project-card-title,
+.project-card-role,
+.project-card-desc,
+.project-card-tag,
+.project-card-period,
+.project-card-metric,
+.project-card-metric-value,
+.project-card-metric-label {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: geometricPrecision;
+    backface-visibility: hidden;
 }
 
 .project-card-arrow {
