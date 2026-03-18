@@ -2602,15 +2602,21 @@ nav {
 .project-card-interactive:hover .project-card-body,
 .project-card-interactive:hover .project-card-title,
 .project-card-interactive:hover .project-card-tag,
+.project-card-interactive:hover .project-card-role,
+.project-card-interactive:hover .project-card-desc,
 .project-card-interactive:hover .project-card-metric-value,
-.project-card-interactive:hover .project-card-period {
-    transform: none;
-    filter: none;
-    text-shadow: none;
-    animation: none;
+.project-card-interactive:hover .project-card-metric-label,
+.project-card-interactive:hover .project-card-period,
+.project-card-interactive:hover .project-card-arrow {
+    transform: none !important;
+    filter: none !important;
+    text-shadow: none !important;
+    animation: none !important;
+    opacity: 1 !important;
     -webkit-font-smoothing: antialiased;
     text-rendering: geometricPrecision;
     backface-visibility: hidden;
+    will-change: auto;
 }
 
 .project-card-title,
@@ -2624,6 +2630,8 @@ nav {
     -webkit-font-smoothing: antialiased;
     text-rendering: geometricPrecision;
     backface-visibility: hidden;
+    transform: translateZ(0);
+    will-change: auto;
 }
 
 .project-card-arrow {
@@ -2641,7 +2649,7 @@ nav {
 
 .project-card-interactive:hover .project-card-arrow {
     opacity: 1;
-    transform: translateY(-50%) translateX(4px);
+    transform: translateY(-50%) translateX(4px) !important;
     color: var(--gold-3);
 }
 
