@@ -2550,3 +2550,79 @@ nav {
         grid-template-columns: 1fr;
     }
 }
+
+/* ===== CARD BOX POP-UP FINAL OVERRIDE ===== */
+.project-card-interactive {
+    isolation: isolate;
+}
+
+.project-card-interactive:hover {
+    transform: translateY(-18px);
+    border-color: rgba(201, 169, 110, 0.34);
+    background: rgba(20, 26, 38, 0.96);
+    box-shadow:
+        0 1px 0 rgba(255,255,255,0.04),
+        0 2px 0 rgba(18, 24, 34, 0.92),
+        0 3px 0 rgba(18, 24, 34, 0.88),
+        0 4px 0 rgba(18, 24, 34, 0.84),
+        0 5px 0 rgba(18, 24, 34, 0.8),
+        0 6px 0 rgba(18, 24, 34, 0.76),
+        0 7px 0 rgba(18, 24, 34, 0.72),
+        0 8px 0 rgba(18, 24, 34, 0.68),
+        0 38px 30px rgba(0, 0, 0, 0.34);
+    animation: card-box-pop-up-top 0.42s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.project-card-interactive::after {
+    content: '';
+    position: absolute;
+    left: 40px;
+    right: 40px;
+    bottom: -30px;
+    height: 36px;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.42), transparent 72%);
+    filter: blur(10px);
+    opacity: 0;
+    transform: scale(0.86);
+    transition: opacity 0.38s ease, transform 0.38s ease;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.project-card-interactive:hover::after {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.project-card-interactive:hover .project-card-icon,
+.project-card-interactive:hover .project-card-body,
+.project-card-interactive:hover .project-card-title,
+.project-card-interactive:hover .project-card-tag,
+.project-card-interactive:hover .project-card-metric-value,
+.project-card-interactive:hover .project-card-period {
+    transform: none;
+    filter: none;
+    text-shadow: none;
+    animation: none;
+}
+
+@keyframes card-box-pop-up-top {
+    0% {
+        transform: translateY(0);
+        box-shadow: 0 20px 60px rgba(5, 12, 24, 0.2);
+    }
+    100% {
+        transform: translateY(-18px);
+        box-shadow:
+            0 1px 0 rgba(255,255,255,0.04),
+            0 2px 0 rgba(18, 24, 34, 0.92),
+            0 3px 0 rgba(18, 24, 34, 0.88),
+            0 4px 0 rgba(18, 24, 34, 0.84),
+            0 5px 0 rgba(18, 24, 34, 0.8),
+            0 6px 0 rgba(18, 24, 34, 0.76),
+            0 7px 0 rgba(18, 24, 34, 0.72),
+            0 8px 0 rgba(18, 24, 34, 0.68),
+            0 38px 30px rgba(0, 0, 0, 0.34);
+    }
+}
