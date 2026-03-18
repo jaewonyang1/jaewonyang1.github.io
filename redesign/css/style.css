@@ -2557,7 +2557,8 @@ nav {
     transform-style: flat !important;
     backface-visibility: visible;
     -webkit-font-smoothing: antialiased;
-    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), filter 0.8s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s ease, background-color 0.4s ease;
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), filter 0.8s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s ease, background-color 0.4s ease !important;
+    animation: none !important;
     will-change: auto;
     contain: none;
 }
@@ -2581,6 +2582,7 @@ nav {
     border-color: rgba(143, 247, 210, 0.28);
     background: rgba(20, 26, 38, 0.96);
     box-shadow: 0 28px 72px rgba(5, 18, 32, 0.34), 0 0 0 1px rgba(143, 247, 210, 0.12);
+    animation: none !important;
 }
 
 .project-card.project-card-interactive::after {
