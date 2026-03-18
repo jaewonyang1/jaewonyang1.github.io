@@ -2552,7 +2552,7 @@ nav {
 }
 
 /* ===== CARD BOX POP-UP FINAL OVERRIDE ===== */
-.project-card-interactive {
+.project-card.project-card-interactive {
     isolation: isolate;
     transform-style: flat !important;
     backface-visibility: visible;
@@ -2562,7 +2562,19 @@ nav {
     contain: none;
 }
 
-.project-card-interactive:hover {
+.project-card.project-card-interactive.fade-in {
+    opacity: 0;
+    transform: translateY(60px) scale(0.97);
+    filter: none !important;
+}
+
+.project-card.project-card-interactive.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    animation: none !important;
+}
+
+.project-card.project-card-interactive:hover {
     transform: translateY(-12px) !important;
     border-color: rgba(201, 169, 110, 0.34);
     background: rgba(20, 26, 38, 0.96);
@@ -2578,7 +2590,7 @@ nav {
         0 38px 30px rgba(0, 0, 0, 0.34);
 }
 
-.project-card-interactive::after {
+.project-card.project-card-interactive::after {
     content: '';
     position: absolute;
     left: 40px;
@@ -2595,26 +2607,26 @@ nav {
     pointer-events: none;
 }
 
-.project-card-interactive:hover::after {
+.project-card.project-card-interactive:hover::after {
     opacity: 1;
     transform: scale(1);
 }
 
-.project-card-interactive,
-.project-card-interactive * {
+.project-card.project-card-interactive,
+.project-card.project-card-interactive * {
     filter: none !important;
 }
 
-.project-card-interactive:hover .project-card-icon,
-.project-card-interactive:hover .project-card-body,
-.project-card-interactive:hover .project-card-title,
-.project-card-interactive:hover .project-card-tag,
-.project-card-interactive:hover .project-card-role,
-.project-card-interactive:hover .project-card-desc,
-.project-card-interactive:hover .project-card-metric-value,
-.project-card-interactive:hover .project-card-metric-label,
-.project-card-interactive:hover .project-card-period,
-.project-card-interactive:hover .project-card-arrow {
+.project-card.project-card-interactive:hover .project-card-icon,
+.project-card.project-card-interactive:hover .project-card-body,
+.project-card.project-card-interactive:hover .project-card-title,
+.project-card.project-card-interactive:hover .project-card-tag,
+.project-card.project-card-interactive:hover .project-card-role,
+.project-card.project-card-interactive:hover .project-card-desc,
+.project-card.project-card-interactive:hover .project-card-metric-value,
+.project-card.project-card-interactive:hover .project-card-metric-label,
+.project-card.project-card-interactive:hover .project-card-period,
+.project-card.project-card-interactive:hover .project-card-arrow {
     transform: none !important;
     filter: none !important;
     text-shadow: none !important;
@@ -2642,7 +2654,7 @@ nav {
     will-change: auto;
 }
 
-.project-card-arrow {
+.project-card.project-card-interactive .project-card-arrow {
     position: absolute;
     right: 28px;
     top: 50%;
@@ -2655,7 +2667,7 @@ nav {
     transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.38s ease, color 0.38s ease;
 }
 
-.project-card-interactive:hover .project-card-arrow {
+.project-card.project-card-interactive:hover .project-card-arrow {
     opacity: 1;
     transform: translateY(-50%) translateX(4px) !important;
     color: #b8ffe8;
