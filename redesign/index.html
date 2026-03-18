@@ -450,17 +450,17 @@
             <>
                 <nav>
                     <div className="nav-inner">
-                        <div className="logo" onClick={goBack}>JAEWON YANG</div>
+                        <div className="logo" onClick={goBack}>양재원</div>
                         {selectedProject !== null ? (
                             <button className="nav-back" onClick={goBack}>&larr; 포트폴리오</button>
                         ) : (
                             <ul className="nav-links">
-                                <li><a className="nav-link" onClick={() => scrollTo('home')}>Home</a></li>
-                                <li><a className="nav-link" onClick={() => scrollTo('summary')}>Summary</a></li>
-                                <li><a className="nav-link" onClick={() => scrollTo('projects')}>Career</a></li>
-                                <li><a className="nav-link" onClick={() => scrollTo('tech')}>Skills</a></li>
-                                <li><a className="nav-link" onClick={() => scrollTo('certs')}>Certs</a></li>
-                                <li><a className="nav-link" onClick={() => scrollTo('contact')}>Contact</a></li>
+                                <li><a className="nav-link" onClick={() => scrollTo('home')}>홈</a></li>
+                                <li><a className="nav-link" onClick={() => scrollTo('summary')}>요약</a></li>
+                                <li><a className="nav-link" onClick={() => scrollTo('projects')}>경력</a></li>
+                                <li><a className="nav-link" onClick={() => scrollTo('tech')}>기술</a></li>
+                                <li><a className="nav-link" onClick={() => scrollTo('certs')}>자격</a></li>
+                                <li><a className="nav-link" onClick={() => scrollTo('contact')}>연락처</a></li>
                             </ul>
                         )}
                     </div>
@@ -496,13 +496,18 @@
                                         <div className="hero-signal-orb hero-signal-orb-a"></div>
                                         <div className="hero-signal-orb hero-signal-orb-b"></div>
                                         <div className="hero-signal-panel">
-                                            <div className="hero-signal-tag">Security Portfolio</div>
+                                            <div className="hero-signal-tag">핵심 영역</div>
                                             <div className="hero-signal-value">5.5+</div>
                                             <div className="hero-signal-copy">정보보안 실무를 중심으로 인증 대응, 인프라 보호, 취약점 분석과 운영을 수행해 왔습니다.</div>
                                             <div className="hero-signal-metrics">
                                                 <div className="hero-signal-metric">
-                                                    <span className="hero-signal-metric-label">FOCUS</span>
                                                     <strong>정보보안</strong>
+                                                </div>
+                                                <div className="hero-signal-metric">
+                                                    <strong>인프라 운영</strong>
+                                                </div>
+                                                <div className="hero-signal-metric">
+                                                    <strong>솔루션 운영</strong>
                                                 </div>
                                             </div>
                                         </div>

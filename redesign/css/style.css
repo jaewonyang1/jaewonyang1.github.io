@@ -1669,8 +1669,8 @@ nav {
 
 /* ===== REDESIGN OVERRIDES ===== */
 :root {
-    --bg: #06111f;
-    --bg-2: #0b1728;
+    --bg: #08090d;
+    --bg-2: #0e1018;
     --bg-card: rgba(10, 20, 35, 0.82);
     --bg-card-hover: rgba(14, 29, 49, 0.94);
     --gold: #8ff7d2;
@@ -1689,10 +1689,7 @@ nav {
 }
 
 body {
-    background:
-        radial-gradient(circle at top left, rgba(83, 199, 255, 0.16), transparent 28%),
-        radial-gradient(circle at 85% 12%, rgba(143, 247, 210, 0.14), transparent 22%),
-        linear-gradient(180deg, #06111f 0%, #09172a 48%, #07111d 100%);
+    background: var(--bg);
     color: var(--text);
 }
 
@@ -1701,13 +1698,13 @@ body {
     filter: saturate(1.15);
 }
 
-::-webkit-scrollbar-track { background: #07111d; }
-::-webkit-scrollbar-thumb { background: linear-gradient(180deg, rgba(83, 199, 255, 0.42), rgba(143, 247, 210, 0.42)); }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: rgba(201, 169, 110, 0.28); }
 
 nav {
-    background: rgba(6, 16, 30, 0.7);
-    border-bottom: 1px solid rgba(111, 213, 255, 0.1);
-    box-shadow: 0 12px 40px rgba(5, 10, 18, 0.22);
+    background: rgba(8, 9, 13, 0.7);
+    border-bottom: 1px solid rgba(201, 169, 110, 0.08);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
 }
 
 .logo,
@@ -1722,8 +1719,8 @@ nav {
 
 .hero::before {
     background:
-        radial-gradient(circle at 72% 28%, rgba(83, 199, 255, 0.18), transparent 0 33%),
-        radial-gradient(circle at 10% 90%, rgba(143, 247, 210, 0.12), transparent 0 26%),
+        radial-gradient(circle at 72% 28%, rgba(201, 169, 110, 0.12), transparent 0 33%),
+        radial-gradient(circle at 10% 90%, rgba(201, 169, 110, 0.08), transparent 0 26%),
         linear-gradient(180deg, rgba(255,255,255,0.015), transparent 55%);
 }
 
@@ -1734,7 +1731,7 @@ nav {
     top: auto;
     bottom: 84px;
     transform: none;
-    background: linear-gradient(90deg, transparent, rgba(83, 199, 255, 0.35), rgba(143, 247, 210, 0.6));
+    background: linear-gradient(90deg, transparent, rgba(201, 169, 110, 0.26), rgba(201, 169, 110, 0.5));
 }
 
 .hero-name {
@@ -1875,10 +1872,9 @@ nav {
 
 .hero-signal-metrics {
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 12px;
     margin-top: 28px;
-    max-width: 170px;
 }
 
 .hero-signal-metric {
@@ -1886,14 +1882,11 @@ nav {
     border-radius: 18px;
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(111, 213, 255, 0.12);
-}
-
-.hero-signal-metric-label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: var(--text-3);
+    min-height: 84px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .hero-signal-metric strong {
@@ -1917,12 +1910,12 @@ nav {
 }
 
 .section-divider-line {
-    background: linear-gradient(90deg, transparent, rgba(83, 199, 255, 0.26), rgba(143, 247, 210, 0.26), transparent);
+    background: linear-gradient(90deg, transparent, rgba(201, 169, 110, 0.15), rgba(201, 169, 110, 0.32), transparent);
 }
 
 .section-divider-diamond {
-    background: linear-gradient(135deg, #7af2cb, #59c6ff);
-    box-shadow: 0 0 24px rgba(83, 199, 255, 0.35);
+    background: var(--gold);
+    box-shadow: 0 0 24px rgba(201, 169, 110, 0.28);
 }
 
 .detail-overview-card,
@@ -2005,6 +1998,28 @@ nav {
 
 .project-card-interactive {
     cursor: pointer;
+    position: relative;
+}
+
+.project-card-interactive::after {
+    content: '\2197';
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border-radius: 999px;
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 700;
+    background: rgba(201, 169, 110, 0.12);
+    border: 1px solid rgba(201, 169, 110, 0.18);
+    box-shadow: 0 0 0 rgba(201, 169, 110, 0);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                background 0.35s ease;
 }
 
 .project-card-interactive:hover {
@@ -2012,6 +2027,12 @@ nav {
     border-color: rgba(143, 247, 210, 0.28);
     background: rgba(12, 26, 43, 0.96);
     box-shadow: 0 32px 90px rgba(14, 78, 118, 0.34);
+}
+
+.project-card-interactive:hover::after {
+    transform: translateY(-4px) scale(1.08);
+    background: rgba(201, 169, 110, 0.2);
+    box-shadow: 0 0 0 8px rgba(201, 169, 110, 0.08);
 }
 
 .project-card-interactive:hover::before {
@@ -2120,24 +2141,33 @@ nav {
 
 .fade-in {
     opacity: 0;
-    transform: translate3d(0, 46px, 0) scale(0.985);
-    filter: blur(14px);
-    transition:
-        opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
-        transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
-        filter 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    transform: translate3d(0, 58px, 0) scaleY(1.08) scaleX(0.98);
+    filter: blur(16px);
     will-change: opacity, transform, filter;
 }
 
 .fade-in.visible {
-    opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1);
-    filter: blur(0);
+    animation: slide-in-blurred-bottom 0.85s cubic-bezier(0.23, 1, 0.32, 1) both;
 }
 
 @keyframes signalFloat {
     0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
     50% { transform: translate3d(0, -14px, 0) scale(1.03); }
+}
+
+@keyframes slide-in-blurred-bottom {
+    0% {
+        transform: translate3d(0, 58px, 0) scaleY(1.08) scaleX(0.98);
+        transform-origin: 50% 100%;
+        filter: blur(16px);
+        opacity: 0;
+    }
+    100% {
+        transform: translate3d(0, 0, 0) scaleY(1) scaleX(1);
+        transform-origin: 50% 50%;
+        filter: blur(0);
+        opacity: 1;
+    }
 }
 
 @media (max-width: 1024px) {
@@ -2163,4 +2193,12 @@ nav {
         grid-template-columns: 1fr;
     }
 
+    .hero-signal-metrics {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card-interactive::after {
+        top: 16px;
+        right: 18px;
+    }
 }
