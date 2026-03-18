@@ -2557,10 +2557,13 @@ nav {
     backface-visibility: hidden;
     -webkit-font-smoothing: antialiased;
     transform: translateZ(0);
+    transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease, background 0.28s ease;
+    will-change: transform, box-shadow;
+    contain: layout paint;
 }
 
 .project-card-interactive:hover {
-    transform: translateY(-18px) translateZ(0);
+    transform: translateY(-14px);
     border-color: rgba(201, 169, 110, 0.34);
     background: rgba(20, 26, 38, 0.96);
     box-shadow:
@@ -2573,7 +2576,6 @@ nav {
         0 7px 0 rgba(18, 24, 34, 0.72),
         0 8px 0 rgba(18, 24, 34, 0.68),
         0 38px 30px rgba(0, 0, 0, 0.34);
-    animation: card-box-pop-up-top 0.42s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 .project-card-interactive::after {
@@ -2626,11 +2628,12 @@ nav {
 .project-card-period,
 .project-card-metric,
 .project-card-metric-value,
-.project-card-metric-label {
+.project-card-metric-label,
+.project-card-icon img {
     -webkit-font-smoothing: antialiased;
     text-rendering: geometricPrecision;
     backface-visibility: hidden;
-    transform: translateZ(0);
+    transform: none;
     will-change: auto;
 }
 
@@ -2651,24 +2654,4 @@ nav {
     opacity: 1;
     transform: translateY(-50%) translateX(4px) !important;
     color: var(--gold-3);
-}
-
-@keyframes card-box-pop-up-top {
-    0% {
-        transform: translateY(0);
-        box-shadow: 0 20px 60px rgba(5, 12, 24, 0.2);
-    }
-    100% {
-        transform: translateY(-18px);
-        box-shadow:
-            0 1px 0 rgba(255,255,255,0.04),
-            0 2px 0 rgba(18, 24, 34, 0.92),
-            0 3px 0 rgba(18, 24, 34, 0.88),
-            0 4px 0 rgba(18, 24, 34, 0.84),
-            0 5px 0 rgba(18, 24, 34, 0.8),
-            0 6px 0 rgba(18, 24, 34, 0.76),
-            0 7px 0 rgba(18, 24, 34, 0.72),
-            0 8px 0 rgba(18, 24, 34, 0.68),
-            0 38px 30px rgba(0, 0, 0, 0.34);
-    }
 }
