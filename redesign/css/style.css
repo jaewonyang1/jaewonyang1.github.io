@@ -2564,14 +2564,13 @@ nav {
 
 .project-card.project-card-interactive.fade-in {
     opacity: 0;
-    transform: translateY(60px) scale(0.97);
-    filter: none !important;
+    transform: translate3d(0, 58px, 0) scaleY(1.08) scaleX(0.98);
+    filter: blur(10px);
+    will-change: opacity, transform, filter;
 }
 
 .project-card.project-card-interactive.fade-in.visible {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    animation: none !important;
+    animation: slide-in-blurred-bottom 0.85s cubic-bezier(0.23, 1, 0.32, 1) both !important;
 }
 
 .project-card.project-card-interactive:hover {
@@ -2652,6 +2651,12 @@ nav {
     backface-visibility: hidden;
     transform: none;
     will-change: auto;
+}
+
+.project-card.project-card-interactive .project-card-period {
+    font-family: 'Noto Sans KR', 'Inter', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.01em;
 }
 
 .project-card.project-card-interactive .project-card-arrow {
