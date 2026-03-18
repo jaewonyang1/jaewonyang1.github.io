@@ -2334,27 +2334,59 @@ nav {
     cursor: pointer;
     position: relative;
     transform-style: preserve-3d;
+    isolation: isolate;
 }
 
 .project-card-interactive:hover {
-    transform: perspective(1400px) translateY(-14px) translateZ(18px) scale(1.03) rotateX(5deg);
+    transform: perspective(1600px) translateY(-18px) scale(1.035) rotateX(7deg);
     border-color: var(--border-hover);
     background: var(--bg-card-hover);
-    box-shadow: 0 34px 90px rgba(0, 0, 0, 0.38), 0 0 0 1px rgba(201, 169, 110, 0.12);
+    box-shadow: 0 42px 110px rgba(0, 0, 0, 0.42), 0 0 0 1px rgba(201, 169, 110, 0.16);
+}
+
+.project-card-interactive::after {
+    content: '';
+    position: absolute;
+    left: 40px;
+    right: 40px;
+    bottom: -30px;
+    height: 36px;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.42), transparent 72%);
+    filter: blur(10px);
+    opacity: 0;
+    transform: scale(0.86);
+    transition: opacity 0.38s ease, transform 0.38s ease;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.project-card-interactive:hover::after {
+    opacity: 1;
+    transform: scale(1);
 }
 
 .project-card-interactive:hover::before {
     opacity: 1;
-    box-shadow: 0 0 24px rgba(201, 169, 110, 0.12);
+    box-shadow: 0 0 26px rgba(201, 169, 110, 0.14);
 }
 
 .project-card-interactive:hover .project-card-icon {
-    transform: translateY(-6px) scale(1.08);
-    filter: drop-shadow(0 14px 20px rgba(201, 169, 110, 0.22));
+    transform: none;
+    filter: none;
 }
 
 .project-card-interactive:hover .project-card-body {
-    transform: translateY(-4px);
+    transform: none;
+}
+
+.project-card-interactive:hover .project-card-title,
+.project-card-interactive:hover .project-card-tag,
+.project-card-interactive:hover .project-card-metric-value,
+.project-card-interactive:hover .project-card-period {
+    transform: none;
+    text-shadow: none;
+    animation: none;
 }
 
 .project-card-static {
