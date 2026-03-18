@@ -2554,16 +2554,17 @@ nav {
 /* ===== CARD BOX POP-UP FINAL OVERRIDE ===== */
 .project-card-interactive {
     isolation: isolate;
-    backface-visibility: hidden;
+    transform-style: flat !important;
+    backface-visibility: visible;
     -webkit-font-smoothing: antialiased;
-    transform: translateZ(0);
-    transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease, background 0.28s ease;
-    will-change: transform, box-shadow;
-    contain: layout paint;
+    transform: none !important;
+    transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease, background-color 0.24s ease;
+    will-change: auto;
+    contain: none;
 }
 
 .project-card-interactive:hover {
-    transform: translateY(-14px);
+    transform: translateY(-12px) !important;
     border-color: rgba(201, 169, 110, 0.34);
     background: rgba(20, 26, 38, 0.96);
     box-shadow:
@@ -2587,7 +2588,7 @@ nav {
     height: 36px;
     border-radius: 999px;
     background: radial-gradient(circle, rgba(0, 0, 0, 0.42), transparent 72%);
-    filter: blur(10px);
+    filter: blur(6px);
     opacity: 0;
     transform: scale(0.86);
     transition: opacity 0.38s ease, transform 0.38s ease;
@@ -2597,7 +2598,12 @@ nav {
 
 .project-card-interactive:hover::after {
     opacity: 1;
-    transform: scale(1.05);
+    transform: scale(1);
+}
+
+.project-card-interactive,
+.project-card-interactive * {
+    filter: none !important;
 }
 
 .project-card-interactive:hover .project-card-icon,
@@ -2617,7 +2623,7 @@ nav {
     opacity: 1 !important;
     -webkit-font-smoothing: antialiased;
     text-rendering: geometricPrecision;
-    backface-visibility: hidden;
+    backface-visibility: visible;
     will-change: auto;
 }
 
