@@ -11,95 +11,15 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-<canvas id="particles"></canvas>
 <div id="root"></div>
-
-<script>
-(function() {
-    const canvas = document.getElementById('particles');
-    const ctx = canvas.getContext('2d');
-    let w;
-    let h;
-    let particles = [];
-
-    function resize() {
-        w = canvas.width = window.innerWidth;
-        h = canvas.height = window.innerHeight * 3;
-    }
-
-    resize();
-    window.addEventListener('resize', resize);
-
-    class Particle {
-        constructor() {
-            this.reset();
-        }
-
-        reset() {
-            this.x = Math.random() * w;
-            this.y = Math.random() * h;
-            this.size = Math.random() * 2 + 0.5;
-            this.speedX = (Math.random() - 0.5) * 0.3;
-            this.speedY = -(Math.random() * 0.3 + 0.1);
-            this.opacity = Math.random() * 0.3 + 0.05;
-            this.fadeSpeed = Math.random() * 0.003 + 0.001;
-            this.growing = Math.random() > 0.5;
-        }
-
-        update() {
-            this.x += this.speedX;
-            this.y += this.speedY;
-
-            if (this.growing) {
-                this.opacity += this.fadeSpeed;
-                if (this.opacity >= 0.35) this.growing = false;
-            } else {
-                this.opacity -= this.fadeSpeed;
-                if (this.opacity <= 0.02) this.reset();
-            }
-
-            if (this.y < -10 || this.x < -10 || this.x > w + 10) {
-                this.reset();
-            }
-        }
-
-        draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(201, 169, 110, ${this.opacity})`;
-            ctx.fill();
-
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size * 3, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(201, 169, 110, ${this.opacity * 0.15})`;
-            ctx.fill();
-        }
-    }
-
-    for (let i = 0; i < 50; i += 1) {
-        particles.push(new Particle());
-    }
-
-    function animate() {
-        ctx.clearRect(0, 0, w, h);
-        particles.forEach((particle) => {
-            particle.update();
-            particle.draw();
-        });
-        requestAnimationFrame(animate);
-    }
-
-    animate();
-})();
-</script>
 
 <script type="text/babel">
     const { useEffect, useState, useRef } = React;
 
     const projectGradients = [
         ['#2E7D32', '#43A047'],
+        ['#FFB74D', '#FFE0B2'],
         ['#1565C0', '#1E88E5'],
-        ['#6A1B9A', '#8E24AA'],
     ];
 
     const makeArtwork = (title, subtitle, icon, palette) => {
@@ -135,7 +55,7 @@
         { value: '5.5+', label: 'Years', desc: '정보보안 실무 경력' },
         { value: '20+', label: 'Projects', desc: '취약점 진단 및 컨설팅 수행' },
         { value: '450+', label: 'Actions', desc: '전자금융기반시설 취약점 조치' },
-        { value: 'ISMS', label: 'Audit', desc: '인증 대응 및 증적 운영 경험' },
+        { value: 'ISMS·PG', label: 'Audit', desc: '인증 대응 및 증적 운영 경험' },
     ];
 
     const summaryCards = [
@@ -174,16 +94,16 @@
             iconAlt: '이지샵 로고',
             iconStyle: { width: '44px', height: '44px' },
             company: '이지샵',
-            title: 'IT 인프라 운영 / 정보보안 매니저',
+            title: 'IT 인프라 운영 / 정보보안',
             imageSrc: makeArtwork('Security Operations', '인증 대응 · 인프라 보안 · 로그 분석', '🛡️', ['#17311c', '#2e7d32', '#9fe870']),
             period: '2025.02 ~ 2026.03',
             role: '정보보안 및 인프라 운영 담당',
             description: 'ISMS 인증 심사 및 PG 인증 심사 대응, 전자금융기반시설 취약점 조치, 서버·네트워크·DBMS 운영, 클라우드 보안 설정, 보안 솔루션 운영, 로그 수집·분석 환경 구축까지 함께 수행하고 있습니다.',
             overview: [
-                { label: '주요 영역', value: '인증·운영·조치' },
-                { label: '보안 기준', value: '전자금융기반시설' },
-                { label: '조치 규모', value: '500건 중 450건+' },
-                { label: '핵심 성과', value: 'ISMS·PG 인증 대응' },
+                { label: '주요 영역', value: '인증 대응\n인프라 운영·조치' },
+                { label: '보안 기준', value: '전자금융\n기반시설' },
+                { label: '조치 규모', value: '500건 중\n450건+' },
+                { label: '핵심 성과', value: 'ISMS·PG\n인증 대응' },
             ],
             achievements: [
                 { label: 'ISMS', value: '결함 100% 조치' },
@@ -220,15 +140,15 @@
             iconStyle: { width: '44px', height: '44px' },
             company: 'SK쉴더스',
             title: '인프라 취약점 분석·평가 컨설팅',
-            imageSrc: makeArtwork('Vulnerability Consulting', '진단 고도화 · PM · 보호대책 수립', '🔎', ['#0f2540', '#1565c0', '#7fd0ff']),
+            imageSrc: makeArtwork('Vulnerability Consulting', '진단 고도화 · PM · 보호대책 수립', '🔎', ['#8D4E16', '#FFB74D', '#FFF3E0']),
             period: '2022.08 ~ 2025.01',
             role: '취약점 분석·평가 컨설팅(금융컨설팅)',
             description: '주요정보통신기반시설과 전자금융기반시설 대상 취약점 분석·평가 컨설팅을 수행했고, 진단 스크립트 고도화 프로젝트의 PM 역할을 맡아 품질과 효율을 함께 개선했습니다.',
             overview: [
-                { label: '수행 분야', value: '취약점 분석·평가 컨설팅' },
-                { label: '역할', value: 'PM 및 실무 리드' },
+                { label: '수행 분야', value: '취약점 분석·평가\n컨설팅' },
+                { label: '역할', value: 'PM 및\n실무 리드' },
                 { label: '고객군', value: '민간·공공·금융' },
-                { label: '프로젝트', value: '20건 이상' },
+                { label: '프로젝트', value: '20건\n이상' },
             ],
             achievements: [
                 { label: '컨설팅', value: '20건+' },
@@ -259,15 +179,15 @@
             iconStyle: { width: '48px', height: '32px' },
             company: '윈스',
             title: '시스템 보안 점검 및 보안 훈련 수행',
-            imageSrc: makeArtwork('Security Assessment', '운영 점검 · 훈련 · 현장 평가', '🖥️', ['#2b1736', '#6a1b9a', '#d79cff']),
+            imageSrc: makeArtwork('Security Assessment', '운영 점검 · 훈련 · 현장 평가', '🖥️', ['#0f2540', '#1565c0', '#7fd0ff']),
             period: '2020.11 ~ 2022.08',
             role: '보안 훈련 및 시스템 점검 담당',
             description: 'ISMS 증적 관리, 보안 훈련 운영, 공공기관 대상 방문 점검, 주요 시스템 취약점 진단 등 운영 실무 중심의 보안 업무를 수행했습니다.',
             overview: [
                 { label: '핵심 업무', value: '운영·훈련·점검' },
-                { label: '대상 기관', value: '문체부 산하기관 51개+' },
-                { label: '훈련 경험', value: '해킹메일·DDoS' },
-                { label: '운영 강점', value: 'ISMS 증적 관리' },
+                { label: '대상 기관', value: '문체부 산하기관\n51개+' },
+                { label: '훈련 경험', value: '해킹메일\nDDoS' },
+                { label: '운영 강점', value: 'ISMS\n증적 관리' },
             ],
             achievements: [
                 { label: '방문 점검', value: '51개 기관' },
@@ -415,6 +335,7 @@
 
     const Portfolio = () => {
         const [selectedProject, setSelectedProject] = useState(null);
+        const [scrollProgress, setScrollProgress] = useState(0);
         const scrollPosRef = useRef(0);
 
         const selectProject = (idx) => {
@@ -434,14 +355,30 @@
         useEffect(() => {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
+                    entry.target.classList.toggle('visible', entry.isIntersecting);
                 });
-            }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+            }, { threshold: 0.18, rootMargin: '0px 0px -10% 0px' });
 
             document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
             return () => observer.disconnect();
+        }, [selectedProject]);
+
+        useEffect(() => {
+            const updateScrollProgress = () => {
+                const scrollTop = window.scrollY;
+                const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const progress = scrollHeight > 0 ? Math.min(scrollTop / scrollHeight, 1) : 0;
+                setScrollProgress(progress);
+            };
+
+            updateScrollProgress();
+            window.addEventListener('scroll', updateScrollProgress, { passive: true });
+            window.addEventListener('resize', updateScrollProgress);
+
+            return () => {
+                window.removeEventListener('scroll', updateScrollProgress);
+                window.removeEventListener('resize', updateScrollProgress);
+            };
         }, [selectedProject]);
 
         const scrollTo = (id) => {
@@ -452,19 +389,22 @@
             <>
                 <nav>
                     <div className="nav-inner">
-                        <div className="logo" onClick={goBack}>JAEWON YANG</div>
+                        <div className="logo" onClick={goBack}>양재원</div>
                         {selectedProject !== null ? (
                             <button className="nav-back" onClick={goBack}>&larr; 포트폴리오</button>
                         ) : (
                             <ul className="nav-links">
-                                <li><a className="nav-link" onClick={() => scrollTo('home')}>Home</a></li>
-                                <li><a className="nav-link" onClick={() => scrollTo('summary')}>Summary</a></li>
-                                <li><a className="nav-link" onClick={() => scrollTo('projects')}>Career</a></li>
-                                <li><a className="nav-link" onClick={() => scrollTo('tech')}>Skills</a></li>
-                                <li><a className="nav-link" onClick={() => scrollTo('certs')}>Certs</a></li>
-                                <li><a className="nav-link" onClick={() => scrollTo('contact')}>Contact</a></li>
+                                <li><a className="nav-link" onClick={() => scrollTo('home')}>홈</a></li>
+                                <li><a className="nav-link" onClick={() => scrollTo('summary')}>요약</a></li>
+                                <li><a className="nav-link" onClick={() => scrollTo('projects')}>경력</a></li>
+                                <li><a className="nav-link" onClick={() => scrollTo('tech')}>기술</a></li>
+                                <li><a className="nav-link" onClick={() => scrollTo('certs')}>자격</a></li>
+                                <li><a className="nav-link" onClick={() => scrollTo('contact')}>연락처</a></li>
                             </ul>
                         )}
+                    </div>
+                    <div className="scroll-progress">
+                        <div className="scroll-progress-fill" style={{ transform: `scaleX(${scrollProgress})` }}></div>
                     </div>
                 </nav>
 
@@ -494,15 +434,22 @@
                                     </div>
                                 </div>
                                 <div className="hero-right">
-                                    <div className="hero-ornament">
-                                        <div className="hero-ornament-ring"></div>
-                                        <div className="hero-ornament-ring"></div>
-                                        <div className="hero-ornament-ring"></div>
-                                        <div className="hero-ornament-center">5.5+</div>
-                                        <div className="hero-ornament-dot"></div>
-                                        <div className="hero-ornament-dot"></div>
-                                        <div className="hero-ornament-dot"></div>
-                                        <div className="hero-ornament-dot"></div>
+                                    <div className="hero-signal">
+                                        <div className="hero-signal-orb hero-signal-orb-a"></div>
+                                        <div className="hero-signal-orb hero-signal-orb-b"></div>
+                                        <div className="hero-signal-panel">
+                                            <div className="hero-signal-figure" aria-hidden="true">
+                                                <div className="hero-signal-figure-shadow"></div>
+                                                <div className="hero-signal-figure-glow"></div>
+                                                <div className="hero-signal-value">5.5+</div>
+                                            </div>
+                                            <div className="hero-signal-copy">정보보안 실무를 중심으로 인증 대응, 인프라 보호, 취약점 분석과 운영을 수행해 왔습니다.</div>
+                                            <div className="hero-signal-metrics">
+                                                <div className="hero-signal-metric"><span>정보보안</span></div>
+                                                <div className="hero-signal-metric"><span>인프라 운영</span></div>
+                                                <div className="hero-signal-metric"><span>솔루션 운영</span></div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -573,7 +520,7 @@
                                 </div>
                                 <div className="projects-list">
                                     {projects.map((p, idx) => (
-                                        <div key={idx} className="project-card fade-in" onClick={() => selectProject(idx)} style={{ transitionDelay: `${Math.min(idx * 0.06, 0.4)}s` }}>
+                                        <div key={idx} className="project-card project-card-interactive fade-in" onClick={() => selectProject(idx)} style={{ transitionDelay: `${Math.min(idx * 0.06, 0.4)}s` }}>
                                             <div className="project-card-left">
                                                 <div className="project-card-icon" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', background: 'var(--bg-2)', borderRadius: '12px' }}>
                                                     <img src={p.iconSrc} alt={p.iconAlt || `${p.company} 경력 아이콘`} style={{ ...p.iconStyle, display: 'block', objectFit: 'contain' }} />
@@ -605,7 +552,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="project-card-arrow">&rarr;</div>
+                                            <div className="project-card-arrow" aria-hidden="true">&rarr;</div>
                                         </div>
                                     ))}
                                 </div>
@@ -660,7 +607,7 @@
                                 </div>
                                 <div className="projects-list">
                                     {certifications.map((cert, idx) => (
-                                        <div key={idx} className="project-card fade-in" style={{ transitionDelay: `${Math.min(idx * 0.06, 0.4)}s`, cursor: 'default' }}>
+                                        <div key={idx} className="project-card project-card-static fade-in" style={{ transitionDelay: `${Math.min(idx * 0.06, 0.4)}s`, cursor: 'default' }}>
                                             <div className="project-card-left">
                                                 <div style={{ fontSize: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', background: 'var(--bg-2)', borderRadius: '12px' }}>
                                                     {idx === 2 ? '\u{1F393}' : '\u{1F4DC}'}
